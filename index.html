@@ -15,12 +15,12 @@
         header {
             background-color: #2d3e50;
             color: white;
-            padding: 2em;
+            padding: 3em 0;
             text-align: center;
         }
         header h1 {
+            font-size: 3em;
             margin: 0;
-            font-size: 2.5em;
         }
         header p {
             font-size: 1.2em;
@@ -31,9 +31,9 @@
             margin: 2em 0;
         }
         section h2 {
-            font-size: 2em;
+            font-size: 2.5em;
             color: #2d3e50;
-            margin-bottom: 0.5em;
+            margin-bottom: 1em;
         }
         section p {
             font-size: 1.1em;
@@ -45,18 +45,23 @@
         }
         .skills li, .projects li {
             background-color: #f4f4f4;
-            margin: 0.5em 0;
-            padding: 1em;
-            border-radius: 5px;
+            margin: 0.75em 0;
+            padding: 1.25em;
+            border-radius: 8px;
+            transition: transform 0.3s ease;
+        }
+        .skills li:hover, .projects li:hover {
+            transform: translateY(-5px);
         }
         .skills li span, .projects li span {
             font-weight: bold;
+            color: #2d3e50;
         }
         footer {
             background-color: #2d3e50;
             color: white;
             text-align: center;
-            padding: 1.5em;
+            padding: 2em 0;
         }
         footer p {
             margin: 0.5em 0;
@@ -74,12 +79,12 @@
 
     <header>
         <h1>Bikash Moktan</h1>
-        <p>Software Developer at SC Department of Labor Licensing and Regulation</p>
+        <p>Software Developer at SC Department of Labor, Licensing, and Regulation</p>
     </header>
 
     <section id="about">
         <h2>About Me</h2>
-        <p>Hello, I'm Bikash Moktan, a passionate software developer currently working with the South Carolina Department of Labor, Licensing, and Regulation (LLR). With expertise in ASP.NET, Azure Document Intelligence, and API development, I strive to build solutions that make a real difference. I enjoy creating efficient, scalable applications that improve workflows and help organizations better serve the public.</p>
+        <p>Hello, I'm Bikash Moktan, a passionate software developer currently working with the South Carolina Department of Labor, Licensing, and Regulation (LLR). I specialize in ASP.NET, Azure Document Intelligence, and API development. I focus on building scalable, efficient applications that improve workflows and provide meaningful solutions to enhance public service.</p>
     </section>
 
     <section id="skills" class="skills">
@@ -89,14 +94,14 @@
             <li><span>Frameworks & Tools:</span> ASP.NET, Azure, Serilog, Jekyll</li>
             <li><span>Database:</span> SQL Server, Azure SQL</li>
             <li><span>Version Control:</span> Git, GitHub</li>
-            <li><span>Others:</span> API Development, Azure Document Intelligence, RESTful Services</li>
+            <li><span>Specializations:</span> API Development, Azure Document Intelligence, RESTful Services</li>
         </ul>
     </section>
 
     <section id="projects" class="projects">
         <h2>Projects</h2>
         <ul>
-            <li><a href="https://github.com/your-username/llr-quickflow" target="_blank"><span>LLRQuickFlow</span>: A document recognition and workflow automation application designed to streamline processes for the SC Department of Labor, Licensing, and Regulation.</a></li>
+            <li><a href="https://github.com/your-username/llr-quickflow" target="_blank"><span>LLRQuickFlow</span>: A document recognition and workflow automation application for SC Department of Labor, Licensing, and Regulation, aimed at improving efficiency in public services.</a></li>
             <li><a href="https://github.com/your-username/project2" target="_blank"><span>Project 2</span>: Description of your second project.</a></li>
             <li><a href="https://github.com/your-username/project3" target="_blank"><span>Project 3</span>: Description of your third project.</a></li>
         </ul>
@@ -104,7 +109,7 @@
 
     <section id="contact">
         <h2>Contact</h2>
-        <p>If you’d like to get in touch, feel free to reach out via my <a href="https://github.com/your-username" target="_blank">GitHub profile</a> or email me directly at <a href="mailto:bikash.moktan@email.com">bikash.moktan@email.com</a>.</p>
+        <p>If you’d like to connect, feel free to reach out via my <a href="https://github.com/your-username" target="_blank">GitHub</a> or email me directly at <a href="mailto:bikash.moktan@email.com">bikash.moktan@email.com</a>.</p>
     </section>
 
     <footer>
@@ -114,4 +119,3 @@
 
 </body>
 </html>
-
