@@ -1,6 +1,6 @@
-# 21 Top ASP.NET Razor Snippets for Front-End Design
+# ASP.NET Razor Snippet Collection
 
-This page provides a collection of essential ASP.NET Razor snippets designed to enhance your front-end development workflow. These snippets cover common UI patterns, form elements, and dynamic content rendering, helping you build beautiful and efficient web pages.
+This document provides a collection of useful ASP.NET Razor snippets for front-end development. Each snippet is linked to its corresponding section for easy navigation.
 
 ## Table of Contents
 
@@ -16,7 +16,7 @@ This page provides a collection of essential ASP.NET Razor snippets designed to 
 10. [Looping Through a List](#looping-through-a-list)
 11. [Displaying Validation Messages](#displaying-validation-messages)
 12. [Using `@Html.ActionLink` for Navigation](#htmlactionlink-for-navigation)
-13. [Generating URLs with `@Url.Action`](#generating-urls-with-urdaction)
+13. [Generating URLs with `@Url.Action`](#urdaction-generating-urls)
 14. [Working with Sections](#working-with-sections)
 15. [Using `@Html.AntiForgeryToken`](#htmlantiforgerytoken)
 16. [Displaying Date and Time](#displaying-date-and-time)
@@ -24,11 +24,11 @@ This page provides a collection of essential ASP.NET Razor snippets designed to 
 18. [Implementing a Navigation Menu](#implementing-a-navigation-menu)
 19. [Dynamic CSS Classes](#dynamic-css-classes)
 20. [Displaying Raw HTML](#displaying-raw-html)
-21. [Using `@Html.DisplayFor` and `@Html.EditorFor`](#htmldisplayfor-and-htmleditorfor)
+21. [Using `@Html.DisplayFor` and `@Html.EditorFor`](#htmldisplayforeditorfor)
 
 ## Snippets
 
-### 1. Basic Layout Structure
+### 1. Basic Layout Structure <a id="basic-layout-structure"></a>
 
 ```razor
 <!DOCTYPE html>
@@ -51,3 +51,146 @@ This page provides a collection of essential ASP.NET Razor snippets designed to 
     <script src="~/js/site.js"></script>
 </body>
 </html>
+2. Rendering Partial Views <a id="rendering-partial-views"></a>
+Razor CSHTML
+
+@await Html.PartialAsync("_PartialViewName")
+3. Displaying Data in a Table <a id="displaying-data-in-a-table"></a>
+Razor CSHTML
+
+<table>
+    <thead>
+        <tr>
+            <th>Column 1</th>
+            <th>Column 2</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.Property1</td>
+                <td>@item.Property2</td>
+            </tr>
+        }
+    </tbody>
+</table>
+4. Creating a Form with Input Fields <a id="creating-a-form-with-input-fields"></a>
+Razor CSHTML
+
+<form method="post" action="/YourController/YourAction">
+    <label for="inputField">Input:</label>
+    <input type="text" id="inputField" name="inputField" />
+    <button type="submit">Submit</button>
+</form>
+5. Dropdown List (Select) <a id="dropdown-list-select"></a>
+Razor CSHTML
+
+<select name="selectField">
+    @foreach (var item in ViewBag.SelectList)
+    {
+        <option value="@item.Value">@item.Text</option>
+    }
+</select>
+6. Radio Buttons <a id="radio-buttons"></a>
+Razor CSHTML
+
+@foreach (var item in ViewBag.RadioList)
+{
+    <input type="radio" id="@item.Value" name="radioGroup" value="@item.Value" />
+    <label for="@item.Value">@item.Text</label><br />
+}
+7. Checkboxes <a id="checkboxes"></a>
+Razor CSHTML
+
+@foreach (var item in ViewBag.CheckboxList)
+{
+    <input type="checkbox" id="@item.Value" name="checkboxGroup" value="@item.Value" />
+    <label for="@item.Value">@item.Text</label><br />
+}
+8. Displaying Images <a id="displaying-images"></a>
+Razor CSHTML
+
+<img src="~/images/yourImage.jpg" alt="Your Image" />
+9. Conditional Rendering <a id="conditional-rendering"></a>
+Razor CSHTML
+
+@if (Model.Condition)
+{
+    <p>Condition is true.</p>
+}
+else
+{
+    <p>Condition is false.</p>
+}
+10. Looping Through a List <a id="looping-through-a-list"></a>
+Razor CSHTML
+
+<ul>
+    @foreach (var item in Model.Items)
+    {
+        <li>@item.Name</li>
+    }
+</ul>
+11. Displaying Validation Messages <a id="displaying-validation-messages"></a>
+Razor CSHTML
+
+@Html.ValidationSummary(true, "", new { @class = "text-danger" })
+@Html.ValidationMessageFor(model => model.Property, "", new { @class = "text-danger" })
+12. Using @Html.ActionLink for Navigation <a id="htmlactionlink-for-navigation"></a>
+Razor CSHTML
+
+@Html.ActionLink("Link Text", "ActionName", "ControllerName", new { id = Model.Id }, null)
+13. Generating URLs with @Url.Action <a id="urdaction-generating-urls"></a>
+Razor CSHTML
+
+<a href="@Url.Action("ActionName", "ControllerName", new { id = Model.Id })">Link Text</a>
+14. Working with Sections <a id="working-with-sections"></a>
+Razor CSHTML
+
+@section Scripts {
+    <script src="~/js/yourScript.js"></script>
+}
+15. Using @Html.AntiForgeryToken <a id="htmlantiforgerytoken"></a>
+Razor CSHTML
+
+<form method="post" action="/YourController/YourAction">
+    @Html.AntiForgeryToken()
+    </form>
+16. Displaying Date and Time <a id="displaying-date-and-time"></a>
+Razor CSHTML
+
+@Model.DateTimeProperty.ToString("MM/dd/yyyy HH:mm")
+17. Creating a Simple Modal <a id="creating-a-simple-modal"></a>
+Razor CSHTML
+
+<div id="myModal" class="modal">
+    <div class="modal-content">
+        <span class="close">&times;</span>
+        <p>Modal Content</p>
+    </div>
+</div>
+18. Implementing a Navigation Menu <a id="implementing-a-navigation-menu"></a>
+Razor CSHTML
+
+<nav>
+    <ul>
+        <li><a href="@Url.Action("Index", "Home")">Home</a></li>
+        <li><a href="@Url.Action("About", "Home")">About</a></li>
+        <li><a href="@Url.Action("Contact", "Home")">Contact</a></li>
+    </ul>
+</nav>
+19. Dynamic CSS Classes <a id="dynamic-css-classes"></a>
+Razor CSHTML
+
+<div class="@(Model.IsActive ? "active" : "inactive")">
+    </div>
+20. Displaying Raw HTML <a id="displaying-raw-html"></a>
+Razor CSHTML
+
+@Html.Raw(Model.HtmlContent)
+21. Using @Html.DisplayFor and @Html.EditorFor <a id="htmldisplayforeditorfor"></a>
+Razor CSHTML
+
+@Html.DisplayFor(model => model.Property)
+@Html.EditorFor(model => model.Property)
