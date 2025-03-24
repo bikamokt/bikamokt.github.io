@@ -51,7 +51,8 @@ This document provides a collection of useful ASP.NET Razor snippets for front-e
     <script src="~/js/site.js"></script>
 </body>
 </html>
-2. Rendering Partial Views <a id="rendering-partial-views"></a>
+
+### 2. Rendering Partial Views <a id="rendering-partial-views"></a>
 Razor CSHTML
 
 @await Html.PartialAsync("_PartialViewName")
