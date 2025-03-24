@@ -80,7 +80,7 @@ This document provides a collection of useful ASP.NET Razor snippets for front-e
 
 ### 4. Creating a Form with Input Fields <a id="creating-a-form-with-input-fields"></a>
 
-
+```
 <form method="post" action="/YourController/YourAction">
     <label for="inputField">Input:</label>
     <input type="text" id="inputField" name="inputField" />
@@ -89,7 +89,7 @@ This document provides a collection of useful ASP.NET Razor snippets for front-e
 
 ### 5. Dropdown List (Select) <a id="dropdown-list-select"></a>
 
-
+```
 <select name="selectField">
     @foreach (var item in ViewBag.SelectList)
     {
@@ -99,7 +99,7 @@ This document provides a collection of useful ASP.NET Razor snippets for front-e
 
 ### 6. Radio Buttons <a id="radio-buttons"></a>
 
-
+```
 @foreach (var item in ViewBag.RadioList)
 {
     <input type="radio" id="@item.Value" name="radioGroup" value="@item.Value" />
@@ -107,7 +107,7 @@ This document provides a collection of useful ASP.NET Razor snippets for front-e
 }
 
 ### 7. Checkboxes <a id="checkboxes"></a>
-Razor CSHTML
+```
 
 @foreach (var item in ViewBag.CheckboxList)
 {
@@ -116,12 +116,12 @@ Razor CSHTML
 }
 
 ###  8. Displaying Images <a id="displaying-images"></a>
-Razor CSHTML
+```
 
 <img src="~/images/yourImage.jpg" alt="Your Image" />
 
 ### 9. Conditional Rendering <a id="conditional-rendering"></a>
-Razor CSHTML
+```
 
 @if (Model.Condition)
 {
@@ -133,7 +133,7 @@ else
 }
 
 ### 10. Looping Through a List <a id="looping-through-a-list"></a>
-Razor CSHTML
+``` Razor CSHTML
 
 <ul>
     @foreach (var item in Model.Items)
@@ -143,42 +143,42 @@ Razor CSHTML
 </ul>
 
 ### 11. Displaying Validation Messages <a id="displaying-validation-messages"></a>
-Razor CSHTML
+```Razor CSHTML
 
 @Html.ValidationSummary(true, "", new { @class = "text-danger" })
 @Html.ValidationMessageFor(model => model.Property, "", new { @class = "text-danger" })
 
 ### 12. Using @Html.ActionLink for Navigation <a id="htmlactionlink-for-navigation"></a>
-Razor CSHTML
+```Razor CSHTML
 
 @Html.ActionLink("Link Text", "ActionName", "ControllerName", new { id = Model.Id }, null)
 
 ### 13. Generating URLs with @Url.Action <a id="urdaction-generating-urls"></a>
-Razor CSHTML
+```Razor CSHTML
 
 <a href="@Url.Action("ActionName", "ControllerName", new { id = Model.Id })">Link Text</a>
 
 ### 14. Working with Sections <a id="working-with-sections"></a>
-Razor CSHTML
+```Razor CSHTML
 
 @section Scripts {
     <script src="~/js/yourScript.js"></script>
 }
 
 ### 15. Using @Html.AntiForgeryToken <a id="htmlantiforgerytoken"></a>
-Razor CSHTML
+```Razor CSHTML
 
 <form method="post" action="/YourController/YourAction">
     @Html.AntiForgeryToken()
     </form>
 
 ### 16. Displaying Date and Time <a id="displaying-date-and-time"></a>
-Razor CSHTML
+```Razor CSHTML
 
 @Model.DateTimeProperty.ToString("MM/dd/yyyy HH:mm")
 
 ### 17. Creating a Simple Modal <a id="creating-a-simple-modal"></a>
-Razor CSHTML
+```Razor CSHTML
 
 <div id="myModal" class="modal">
     <div class="modal-content">
@@ -188,7 +188,7 @@ Razor CSHTML
 </div>
 
 ### 18. Implementing a Navigation Menu <a id="implementing-a-navigation-menu"></a>
-Razor CSHTML
+```Razor CSHTML
 
 <nav>
     <ul>
@@ -199,18 +199,18 @@ Razor CSHTML
 </nav>
 
 ### 19. Dynamic CSS Classes <a id="dynamic-css-classes"></a>
-Razor CSHTML
+```Razor CSHTML
 
 <div class="@(Model.IsActive ? "active" : "inactive")">
     </div>
 
 ### 20. Displaying Raw HTML <a id="displaying-raw-html"></a>
-Razor CSHTML
+```Razor CSHTML
 
 @Html.Raw(Model.HtmlContent)
 
 ### 21. Using @Html.DisplayFor and @Html.EditorFor <a id="htmldisplayforeditorfor"></a>
-Razor CSHTML
+```Razor CSHTML
 
 @Html.DisplayFor(model => model.Property)
 @Html.EditorFor(model => model.Property)
