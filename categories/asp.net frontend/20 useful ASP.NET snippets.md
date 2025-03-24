@@ -30,7 +30,7 @@ This document provides a collection of useful ASP.NET Razor snippets for front-e
 
 ### 1. Basic Layout Structure <a id="basic-layout-structure"></a>
 
-
+```
 <!DOCTYPE html>
 <html>
 <head>
