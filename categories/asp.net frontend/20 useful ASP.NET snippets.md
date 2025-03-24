@@ -164,11 +164,12 @@ else
 }
 
 ### 15. Using @Html.AntiForgeryToken <a id="htmlantiforgerytoken"></a>
-```
 
+```
 <form method="post" action="/YourController/YourAction">
     @Html.AntiForgeryToken()
     </form>
+
 
 ### 16. Displaying Date and Time <a id="displaying-date-and-time"></a>
 ```
