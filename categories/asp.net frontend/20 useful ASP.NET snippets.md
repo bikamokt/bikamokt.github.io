@@ -6,6 +6,7 @@
 ### 1. Display Current Date in Razor View
 ```razor
 <p>Today's Date: @DateTime.Now.ToString("MMMM dd, yyyy")</p>
+---
 ###2. Simple Form in Razor with Model Binding
 razor
 Copy
