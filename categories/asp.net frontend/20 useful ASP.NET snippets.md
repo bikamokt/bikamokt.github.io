@@ -1,6 +1,3 @@
- 20 ASP.NET snippets for frontend development using Razor and traditional ASP.NET MVC/Views:
-
-markdown
 
 # 20 ASP.NET Snippets for Frontend Development Using Razor and ASP.NET MVC/Views
 
