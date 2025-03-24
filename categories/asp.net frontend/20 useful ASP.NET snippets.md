@@ -56,7 +56,8 @@ This document provides a collection of useful ASP.NET Razor snippets for front-e
 
 
 @await Html.PartialAsync("_PartialViewName")
-3. Displaying Data in a Table <a id="displaying-data-in-a-table"></a>
+
+###  3. Displaying Data in a Table <a id="displaying-data-in-a-table"></a>
 
 
 <table>
@@ -76,8 +77,9 @@ This document provides a collection of useful ASP.NET Razor snippets for front-e
         }
     </tbody>
 </table>
-4. Creating a Form with Input Fields <a id="creating-a-form-with-input-fields"></a>
-Razor CSHTML
+
+### 4. Creating a Form with Input Fields <a id="creating-a-form-with-input-fields"></a>
+
 
 <form method="post" action="/YourController/YourAction">
     <label for="inputField">Input:</label>
