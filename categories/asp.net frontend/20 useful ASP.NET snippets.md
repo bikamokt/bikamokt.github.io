@@ -1,184 +1,53 @@
+# 21 Top ASP.NET Razor Snippets for Front-End Design
 
-# 20 ASP.NET Snippets for Frontend Development Using Razor and ASP.NET MVC/Views
+This page provides a collection of essential ASP.NET Razor snippets designed to enhance your front-end development workflow. These snippets cover common UI patterns, form elements, and dynamic content rendering, helping you build beautiful and efficient web pages.
 
----
+## Table of Contents
 
-### 1. Display Current Date in Razor View
+1.  [Basic Layout Structure](#basic-layout-structure)
+2.  [Rendering Partial Views](#rendering-partial-views)
+3.  [Displaying Data in a Table](#displaying-data-in-a-table)
+4.  [Creating a Form with Input Fields](#creating-a-form-with-input-fields)
+5.  [Dropdown List (Select)](#dropdown-list-select)
+6.  [Radio Buttons](#radio-buttons)
+7.  [Checkboxes](#checkboxes)
+8.  [Displaying Images](#displaying-images)
+9.  [Conditional Rendering](#conditional-rendering)
+10. [Looping Through a List](#looping-through-a-list)
+11. [Displaying Validation Messages](#displaying-validation-messages)
+12. [Using `@Html.ActionLink` for Navigation](#htmlactionlink-for-navigation)
+13. [Generating URLs with `@Url.Action`](#generating-urls-with-urdaction)
+14. [Working with Sections](#working-with-sections)
+15. [Using `@Html.AntiForgeryToken`](#htmlantiforgerytoken)
+16. [Displaying Date and Time](#displaying-date-and-time)
+17. [Creating a Simple Modal](#creating-a-simple-modal)
+18. [Implementing a Navigation Menu](#implementing-a-navigation-menu)
+19. [Dynamic CSS Classes](#dynamic-css-classes)
+20. [Displaying Raw HTML](#displaying-raw-html)
+21. [Using `@Html.DisplayFor` and `@Html.EditorFor`](#htmldisplayfor-and-htmleditorfor)
 
-<p>Today's Date: @DateTime.Now.ToString("MMMM dd, yyyy")</p>
----
+## Snippets
 
+### 1. Basic Layout Structure
 
-###2. Simple Form in Razor with Model Binding
-razor
+```razor
+<!DOCTYPE html>
+<html>
+<head>
+    <title>@ViewBag.Title</title>
+    <link rel="stylesheet" href="~/css/site.css" />
+</head>
+<body>
+    <header>
+        </header>
 
-@model MyApp.Models.UserModel
+    <main>
+        @RenderBody()
+    </main>
 
-<form asp-action="SaveUser" method="post">
-    <label>Name:</label>
-    <input type="text" asp-for="Name" class="form-control" />
-    <span asp-validation-for="Name" class="text-danger"></span>
+    <footer>
+        </footer>
 
-    <button type="submit" class="btn btn-primary">Submit</button>
-</form>
-###3. Render a Partial View
-razor
-Copy
-Edit
-@Html.Partial("_UserDetails", Model)
-or
-
-razor
-Copy
-Edit
-@await Html.PartialAsync("_UserDetails", Model)
-###4. Iterate Over a List in Razor
-razor
-Copy
-Edit
-@foreach (var user in Model.Users)
-{
-    <p>@user.Name - @user.Email</p>
-}
-###5. Conditional Rendering in Razor
-razor
-Copy
-Edit
-@if (User.Identity.IsAuthenticated)
-{
-    <p>Welcome, @User.Identity.Name</p>
-}
-else
-{
-    <a href="/Account/Login">Login</a>
-}
-###6. Using ViewBag to Pass Data
-razor
-Copy
-Edit
-<h1>@ViewBag.Title</h1>
-<p>@ViewBag.Message</p>
-###7. Using ViewData to Pass Data
-razor
-Copy
-Edit
-<h1>@ViewData["PageTitle"]</h1>
-<p>@ViewData["Description"]</p>
-###8. Strongly Typed View with Model Data
-razor
-Copy
-Edit
-@model MyApp.Models.Product
-
-<h2>Product Details</h2>
-<p>Name: @Model.Name</p>
-<p>Price: $@Model.Price</p>
-###9. Tag Helper for Image in Razor
-razor
-Copy
-Edit
-<img asp-append-version="true" src="~/images/logo.png" alt="Logo" />
-###10. ASP.NET Core Input Validation
-razor
-Copy
-Edit
-<input type="email" asp-for="Email" class="form-control" />
-<span asp-validation-for="Email" class="text-danger"></span>
-###11. Create a Drop-down List in Razor
-razor
-Copy
-Edit
-@Html.DropDownListFor(m => m.SelectedCategory, 
-    new SelectList(Model.Categories, "Id", "Name"), 
-    "Select Category", 
-    new { @class = "form-control" })
-###12. Render a Component Dynamically
-razor
-Copy
-Edit
-<vc:recent-products></vc:recent-products>
-###13. AJAX Call in Razor View
-html
-Copy
-Edit
-<button id="loadData">Load Data</button>
-<div id="result"></div>
-
-<script>
-    document.getElementById("loadData").addEventListener("click", function () {
-        fetch('/Home/GetData')
-            .then(response => response.text())
-            .then(data => document.getElementById("result").innerHTML = data);
-    });
-</script>
-###14. Using TempData to Pass Data Between Actions
-razor
-Copy
-Edit
-<p>@TempData["Message"]</p>
-###15. Display Validation Messages in Razor
-razor
-Copy
-Edit
-@Html.ValidationSummary(true, "", new { @class = "text-danger" })
-###16. Render JSON Object in Razor
-razor
-Copy
-Edit
-@using Newtonsoft.Json
-
-<script>
-    var modelData = @Html.Raw(JsonConvert.SerializeObject(Model));
-    console.log(modelData);
-</script>
-###17. Razor Syntax for Setting CSS Class Dynamically
-razor
-Copy
-Edit
-<p class="@(Model.IsActive ? "text-success" : "text-danger")">
-    @(Model.IsActive ? "Active" : "Inactive")
-</p>
-###18. Display User Claims in Razor
-razor
-Copy
-Edit
-@using System.Security.Claims
-
-@{
-    var user = Context.User;
-    var userId = user.FindFirst(ClaimTypes.NameIdentifier)?.Value;
-    var userEmail = user.FindFirst(ClaimTypes.Email)?.Value;
-}
-
-<p>User ID: @userId</p>
-<p>Email: @userEmail</p>
-###19. Prevent CSRF in Forms
-razor
-Copy
-Edit
-<form asp-action="Submit" method="post">
-    @Html.AntiForgeryToken()
-    <button type="submit">Submit</button>
-</form>
-###20. Create a Table Dynamically
-razor
-Copy
-Edit
-<table class="table">
-    <thead>
-        <tr>
-            <th>Name</th>
-            <th>Email</th>
-        </tr>
-    </thead>
-    <tbody>
-        @foreach (var user in Model.Users)
-        {
-            <tr>
-                <td>@user.Name</td>
-                <td>@user.Email</td>
-            </tr>
-        }
-    </tbody>
-</table>
-These snippets provide a great starting point for frontend development using Razor and ASP.NET MVC/Views. They cover a range of common tasks such as rendering views, form handling, validation, and data binding.
+    <script src="~/js/site.js"></script>
+</body>
+</html>
