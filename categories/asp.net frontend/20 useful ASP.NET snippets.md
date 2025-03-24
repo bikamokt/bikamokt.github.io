@@ -54,12 +54,12 @@ This document provides a collection of useful ASP.NET Razor snippets for front-e
 
 ### 2. Rendering Partial Views <a id="rendering-partial-views"></a>
 
-
+```
 @await Html.PartialAsync("_PartialViewName")
 
 ###  3. Displaying Data in a Table <a id="displaying-data-in-a-table"></a>
 
-
+```
 <table>
     <thead>
         <tr>
