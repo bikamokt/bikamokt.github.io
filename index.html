@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Bikash Moktan - Knowledge Base</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/marked/4.3.0/marked.min.js"></script>
     <style>
         body {
             font-family: 'Arial', sans-serif;
@@ -19,42 +20,41 @@
             text-align: center;
         }
         header h1 {
-            font-size: 3em;
+            font-size: 2.5em;
             margin: 0;
         }
         section {
-            padding: 3em 2em;
-            margin: 2em 0;
+            padding: 2em;
+            margin: 1em 0;
         }
-        section h2 {
-            font-size: 2.5em;
+        h2 {
+            font-size: 2em;
             color: #2d3e50;
-            margin-bottom: 1em;
         }
-        .knowledge-base ul {
-            list-style: none;
-            padding: 0;
-        }
-        .knowledge-base li {
+        .category {
+            margin-bottom: 1.5em;
+            padding: 1em;
             background-color: #f4f4f4;
-            margin: 0.75em 0;
-            padding: 1.25em;
             border-radius: 8px;
-            transition: transform 0.3s ease;
         }
-        .knowledge-base li:hover {
-            transform: translateY(-5px);
-        }
-        .knowledge-base li a {
-            text-decoration: none;
-            font-weight: bold;
+        .category h3 {
+            cursor: pointer;
             color: #2d3e50;
+        }
+        .markdown-content {
+            display: none;
+            background: #fff;
+            padding: 1em;
+            border-radius: 8px;
+            border: 1px solid #ddd;
+            margin-top: 1em;
         }
         footer {
             background-color: #2d3e50;
             color: white;
             text-align: center;
             padding: 2em 0;
+            margin-top: 2em;
         }
     </style>
 </head>
@@ -62,14 +62,12 @@
 
     <header>
         <h1>Bikash Moktan - Knowledge Base</h1>
-        <p>Software Developer | GitHub Knowledge Base</p>
+        <p>Software Developer | Knowledge Base from GitHub</p>
     </header>
 
-    <section id="knowledge-base" class="knowledge-base">
-        <h2>Knowledge Base</h2>
-        <ul id="repo-list">
-            <li>Loading repositories...</li>
-        </ul>
+    <section id="knowledge-base">
+        <h2>Categories</h2>
+        <div id="category-list">Loading categories...</div>
     </section>
 
     <footer>
@@ -78,34 +76,82 @@
     </footer>
 
     <script>
-        async function fetchRepositories() {
-            const username = "bikamokt";  // Replace with your GitHub username
-            const apiUrl = `https://api.github.com/users/${username}/repos`;
+        const username = "bikamokt";  // Replace with your GitHub username
+        const repo = "your-repo-name";  // Replace with your repository name
+        const categoryPath = "categories";  // The folder containing categories
+
+        async function fetchCategories() {
+            const apiUrl = `https://api.github.com/repos/${username}/${repo}/contents/${categoryPath}`;
 
             try {
                 const response = await fetch(apiUrl);
-                const repos = await response.json();
-                const repoList = document.getElementById("repo-list");
-                repoList.innerHTML = "";  // Clear default text
+                const categories = await response.json();
+                const categoryList = document.getElementById("category-list");
+                categoryList.innerHTML = ""; // Clear default text
 
-                repos.forEach(repo => {
-                    if (repo.name.includes("categories/")) {  // Filter for category-based repositories
-                        const listItem = document.createElement("li");
-                        listItem.innerHTML = `<a href="${repo.html_url}" target="_blank">${repo.name}</a>: ${repo.description || "No description available"}`;
-                        repoList.appendChild(listItem);
+                categories.forEach(async (category) => {
+                    if (category.type === "dir") { // Check if it's a folder (category)
+                        const categoryDiv = document.createElement("div");
+                        categoryDiv.classList.add("category");
+                        categoryDiv.innerHTML = `<h3 onclick="toggleCategory('${category.name}')">${category.name} ▼</h3><div id="${category.name}-content"></div>`;
+                        categoryList.appendChild(categoryDiv);
+
+                        await fetchMarkdownFiles(category.name);
                     }
                 });
-
-                if (repoList.innerHTML === "") {
-                    repoList.innerHTML = "<li>No repositories found in 'categories/'.</li>";
-                }
             } catch (error) {
-                console.error("Error fetching repositories:", error);
-                document.getElementById("repo-list").innerHTML = "<li>Failed to load repositories.</li>";
+                console.error("Error fetching categories:", error);
+                document.getElementById("category-list").innerHTML = "<p>Failed to load categories.</p>";
             }
         }
 
-        fetchRepositories();
+        async function fetchMarkdownFiles(categoryName) {
+            const apiUrl = `https://api.github.com/repos/${username}/${repo}/contents/${categoryPath}/${categoryName}`;
+
+            try {
+                const response = await fetch(apiUrl);
+                const files = await response.json();
+                const categoryContentDiv = document.getElementById(`${categoryName}-content`);
+
+                files.forEach(file => {
+                    if (file.name.endsWith(".md")) { // Only load .md files
+                        const fileDiv = document.createElement("div");
+                        fileDiv.innerHTML = `<p><a href="#" onclick="loadMarkdown('${file.download_url}', '${file.name}', '${categoryName}')">${file.name}</a></p>`;
+                        categoryContentDiv.appendChild(fileDiv);
+                    }
+                });
+            } catch (error) {
+                console.error("Error fetching markdown files:", error);
+            }
+        }
+
+        async function loadMarkdown(fileUrl, fileName, categoryName) {
+            try {
+                const response = await fetch(fileUrl);
+                const markdownText = await response.text();
+                const categoryContentDiv = document.getElementById(`${categoryName}-content`);
+
+                let markdownDiv = document.getElementById(`${fileName}-content`);
+                if (!markdownDiv) {
+                    markdownDiv = document.createElement("div");
+                    markdownDiv.id = `${fileName}-content`;
+                    markdownDiv.classList.add("markdown-content");
+                    markdownDiv.innerHTML = `<h4>${fileName}</h4><div>${marked.parse(markdownText)}</div>`;
+                    categoryContentDiv.appendChild(markdownDiv);
+                }
+
+                markdownDiv.style.display = markdownDiv.style.display === "none" ? "block" : "none";
+            } catch (error) {
+                console.error("Error loading markdown file:", error);
+            }
+        }
+
+        function toggleCategory(categoryName) {
+            const categoryContentDiv = document.getElementById(`${categoryName}-content`);
+            categoryContentDiv.style.display = categoryContentDiv.style.display === "none" ? "block" : "none";
+        }
+
+        fetchCategories();
     </script>
 
 </body>
