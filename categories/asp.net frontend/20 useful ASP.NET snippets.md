@@ -6,7 +6,7 @@
 ### 1. Display Current Date in Razor View
 ```razor
 <p>Today's Date: @DateTime.Now.ToString("MMMM dd, yyyy")</p>
-2. Simple Form in Razor with Model Binding
+###2. Simple Form in Razor with Model Binding
 razor
 Copy
 Edit
@@ -19,7 +19,7 @@ Edit
 
     <button type="submit" class="btn btn-primary">Submit</button>
 </form>
-3. Render a Partial View
+###3. Render a Partial View
 razor
 Copy
 Edit
@@ -30,7 +30,7 @@ razor
 Copy
 Edit
 @await Html.PartialAsync("_UserDetails", Model)
-4. Iterate Over a List in Razor
+###4. Iterate Over a List in Razor
 razor
 Copy
 Edit
@@ -38,7 +38,7 @@ Edit
 {
     <p>@user.Name - @user.Email</p>
 }
-5. Conditional Rendering in Razor
+###5. Conditional Rendering in Razor
 razor
 Copy
 Edit
@@ -50,19 +50,19 @@ else
 {
     <a href="/Account/Login">Login</a>
 }
-6. Using ViewBag to Pass Data
+###6. Using ViewBag to Pass Data
 razor
 Copy
 Edit
 <h1>@ViewBag.Title</h1>
 <p>@ViewBag.Message</p>
-7. Using ViewData to Pass Data
+###7. Using ViewData to Pass Data
 razor
 Copy
 Edit
 <h1>@ViewData["PageTitle"]</h1>
 <p>@ViewData["Description"]</p>
-8. Strongly Typed View with Model Data
+###8. Strongly Typed View with Model Data
 razor
 Copy
 Edit
@@ -71,18 +71,18 @@ Edit
 <h2>Product Details</h2>
 <p>Name: @Model.Name</p>
 <p>Price: $@Model.Price</p>
-9. Tag Helper for Image in Razor
+###9. Tag Helper for Image in Razor
 razor
 Copy
 Edit
 <img asp-append-version="true" src="~/images/logo.png" alt="Logo" />
-10. ASP.NET Core Input Validation
+###10. ASP.NET Core Input Validation
 razor
 Copy
 Edit
 <input type="email" asp-for="Email" class="form-control" />
 <span asp-validation-for="Email" class="text-danger"></span>
-11. Create a Drop-down List in Razor
+###11. Create a Drop-down List in Razor
 razor
 Copy
 Edit
@@ -90,12 +90,12 @@ Edit
     new SelectList(Model.Categories, "Id", "Name"), 
     "Select Category", 
     new { @class = "form-control" })
-12. Render a Component Dynamically
+###12. Render a Component Dynamically
 razor
 Copy
 Edit
 <vc:recent-products></vc:recent-products>
-13. AJAX Call in Razor View
+###13. AJAX Call in Razor View
 html
 Copy
 Edit
@@ -109,17 +109,17 @@ Edit
             .then(data => document.getElementById("result").innerHTML = data);
     });
 </script>
-14. Using TempData to Pass Data Between Actions
+###14. Using TempData to Pass Data Between Actions
 razor
 Copy
 Edit
 <p>@TempData["Message"]</p>
-15. Display Validation Messages in Razor
+###15. Display Validation Messages in Razor
 razor
 Copy
 Edit
 @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-16. Render JSON Object in Razor
+###16. Render JSON Object in Razor
 razor
 Copy
 Edit
@@ -129,14 +129,14 @@ Edit
     var modelData = @Html.Raw(JsonConvert.SerializeObject(Model));
     console.log(modelData);
 </script>
-17. Razor Syntax for Setting CSS Class Dynamically
+###17. Razor Syntax for Setting CSS Class Dynamically
 razor
 Copy
 Edit
 <p class="@(Model.IsActive ? "text-success" : "text-danger")">
     @(Model.IsActive ? "Active" : "Inactive")
 </p>
-18. Display User Claims in Razor
+###18. Display User Claims in Razor
 razor
 Copy
 Edit
@@ -150,7 +150,7 @@ Edit
 
 <p>User ID: @userId</p>
 <p>Email: @userEmail</p>
-19. Prevent CSRF in Forms
+###19. Prevent CSRF in Forms
 razor
 Copy
 Edit
@@ -158,7 +158,7 @@ Edit
     @Html.AntiForgeryToken()
     <button type="submit">Submit</button>
 </form>
-20. Create a Table Dynamically
+###20. Create a Table Dynamically
 razor
 Copy
 Edit
