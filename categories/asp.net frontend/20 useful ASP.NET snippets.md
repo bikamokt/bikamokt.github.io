@@ -86,8 +86,9 @@ This document provides a collection of useful ASP.NET Razor snippets for front-e
     <input type="text" id="inputField" name="inputField" />
     <button type="submit">Submit</button>
 </form>
-5. Dropdown List (Select) <a id="dropdown-list-select"></a>
-Razor CSHTML
+
+### 5. Dropdown List (Select) <a id="dropdown-list-select"></a>
+
 
 <select name="selectField">
     @foreach (var item in ViewBag.SelectList)
@@ -95,15 +96,17 @@ Razor CSHTML
         <option value="@item.Value">@item.Text</option>
     }
 </select>
-6. Radio Buttons <a id="radio-buttons"></a>
-Razor CSHTML
+
+### 6. Radio Buttons <a id="radio-buttons"></a>
+
 
 @foreach (var item in ViewBag.RadioList)
 {
     <input type="radio" id="@item.Value" name="radioGroup" value="@item.Value" />
     <label for="@item.Value">@item.Text</label><br />
 }
-7. Checkboxes <a id="checkboxes"></a>
+
+### 7. Checkboxes <a id="checkboxes"></a>
 Razor CSHTML
 
 @foreach (var item in ViewBag.CheckboxList)
@@ -111,11 +114,13 @@ Razor CSHTML
     <input type="checkbox" id="@item.Value" name="checkboxGroup" value="@item.Value" />
     <label for="@item.Value">@item.Text</label><br />
 }
-8. Displaying Images <a id="displaying-images"></a>
+
+###  8. Displaying Images <a id="displaying-images"></a>
 Razor CSHTML
 
 <img src="~/images/yourImage.jpg" alt="Your Image" />
-9. Conditional Rendering <a id="conditional-rendering"></a>
+
+### 9. Conditional Rendering <a id="conditional-rendering"></a>
 Razor CSHTML
 
 @if (Model.Condition)
@@ -126,7 +131,8 @@ else
 {
     <p>Condition is false.</p>
 }
-10. Looping Through a List <a id="looping-through-a-list"></a>
+
+### 10. Looping Through a List <a id="looping-through-a-list"></a>
 Razor CSHTML
 
 <ul>
@@ -135,36 +141,43 @@ Razor CSHTML
         <li>@item.Name</li>
     }
 </ul>
-11. Displaying Validation Messages <a id="displaying-validation-messages"></a>
+
+### 11. Displaying Validation Messages <a id="displaying-validation-messages"></a>
 Razor CSHTML
 
 @Html.ValidationSummary(true, "", new { @class = "text-danger" })
 @Html.ValidationMessageFor(model => model.Property, "", new { @class = "text-danger" })
-12. Using @Html.ActionLink for Navigation <a id="htmlactionlink-for-navigation"></a>
+
+### 12. Using @Html.ActionLink for Navigation <a id="htmlactionlink-for-navigation"></a>
 Razor CSHTML
 
 @Html.ActionLink("Link Text", "ActionName", "ControllerName", new { id = Model.Id }, null)
-13. Generating URLs with @Url.Action <a id="urdaction-generating-urls"></a>
+
+### 13. Generating URLs with @Url.Action <a id="urdaction-generating-urls"></a>
 Razor CSHTML
 
 <a href="@Url.Action("ActionName", "ControllerName", new { id = Model.Id })">Link Text</a>
-14. Working with Sections <a id="working-with-sections"></a>
+
+### 14. Working with Sections <a id="working-with-sections"></a>
 Razor CSHTML
 
 @section Scripts {
     <script src="~/js/yourScript.js"></script>
 }
-15. Using @Html.AntiForgeryToken <a id="htmlantiforgerytoken"></a>
+
+### 15. Using @Html.AntiForgeryToken <a id="htmlantiforgerytoken"></a>
 Razor CSHTML
 
 <form method="post" action="/YourController/YourAction">
     @Html.AntiForgeryToken()
     </form>
-16. Displaying Date and Time <a id="displaying-date-and-time"></a>
+
+### 16. Displaying Date and Time <a id="displaying-date-and-time"></a>
 Razor CSHTML
 
 @Model.DateTimeProperty.ToString("MM/dd/yyyy HH:mm")
-17. Creating a Simple Modal <a id="creating-a-simple-modal"></a>
+
+### 17. Creating a Simple Modal <a id="creating-a-simple-modal"></a>
 Razor CSHTML
 
 <div id="myModal" class="modal">
@@ -173,7 +186,8 @@ Razor CSHTML
         <p>Modal Content</p>
     </div>
 </div>
-18. Implementing a Navigation Menu <a id="implementing-a-navigation-menu"></a>
+
+### 18. Implementing a Navigation Menu <a id="implementing-a-navigation-menu"></a>
 Razor CSHTML
 
 <nav>
@@ -183,16 +197,19 @@ Razor CSHTML
         <li><a href="@Url.Action("Contact", "Home")">Contact</a></li>
     </ul>
 </nav>
-19. Dynamic CSS Classes <a id="dynamic-css-classes"></a>
+
+### 19. Dynamic CSS Classes <a id="dynamic-css-classes"></a>
 Razor CSHTML
 
 <div class="@(Model.IsActive ? "active" : "inactive")">
     </div>
-20. Displaying Raw HTML <a id="displaying-raw-html"></a>
+
+### 20. Displaying Raw HTML <a id="displaying-raw-html"></a>
 Razor CSHTML
 
 @Html.Raw(Model.HtmlContent)
-21. Using @Html.DisplayFor and @Html.EditorFor <a id="htmldisplayforeditorfor"></a>
+
+### 21. Using @Html.DisplayFor and @Html.EditorFor <a id="htmldisplayforeditorfor"></a>
 Razor CSHTML
 
 @Html.DisplayFor(model => model.Property)
