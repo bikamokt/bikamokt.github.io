@@ -30,7 +30,7 @@ This document provides a collection of useful ASP.NET Razor snippets for front-e
 
 ### 1. Basic Layout Structure <a id="basic-layout-structure"></a>
 
-```razor
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -53,11 +53,11 @@ This document provides a collection of useful ASP.NET Razor snippets for front-e
 </html>
 
 ### 2. Rendering Partial Views <a id="rendering-partial-views"></a>
-Razor CSHTML
+
 
 @await Html.PartialAsync("_PartialViewName")
 3. Displaying Data in a Table <a id="displaying-data-in-a-table"></a>
-Razor CSHTML
+
 
 <table>
     <thead>
